@@ -3,9 +3,10 @@
         <h2>Busquedas</h2>
         <hr>
         <ul class="list-group">
-            <li class="list-group-item">Buscar pais</li>
-            <li class="list-group-item">Por region</li>
-            <li class="list-group-item">Por capital</li>
+            <!-- Definicion del routerLink para manejar las rutas del routing.module -->
+            <li class="list-group-item" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Buscar pais</li>
+            <li class="list-group-item" routerLink="region" routerLinkActive="active">Por region</li>
+            <li class="list-group-item" routerLink="capital" routerLinkActive="active">Por capital</li>
         </ul>
     </div>
     

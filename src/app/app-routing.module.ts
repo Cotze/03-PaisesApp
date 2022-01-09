@@ -26,7 +26,7 @@ const routes: Routes = [
         component: VerPaisComponent
     },
     {
-        //Para redireccionar a la ruta principal
+        //Para redireccionar a la ruta principal esta es una excepcion
         path: '**',
         redirectTo: ''
     }
