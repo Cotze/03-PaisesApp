@@ -17,6 +17,7 @@ export class PorPaisComponent {
   buscar(){
 
     this.paisService.buscarPais( this.termino )
+    //es necesario el .suscribe() para utilizar el servicio
     .subscribe( resp =>{
       console.log( resp );
       
