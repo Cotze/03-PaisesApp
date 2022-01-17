@@ -19,9 +19,10 @@ export class PorPaisComponent {
 
   constructor( private paisService: PaisService  ) { }
 
-  buscar(){
+  buscar( termino: string ){
     //se genera el false antes del click para que valide la variable booleana
     this.hayError = false;
+    this.termino = termino;
     this.paisService.buscarPais( this.termino )
     //es necesario el .suscribe() para utilizar el servicio
     .subscribe( (paises) =>{
