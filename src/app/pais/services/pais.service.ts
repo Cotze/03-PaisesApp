@@ -13,13 +13,17 @@ export class PaisService {
   constructor( private http: HttpClient) { }
 
   buscarPais( termino: string): Observable<Country[]> {
-
     const url = `${ this.apiUrl }/name/${ termino }`
     return this.http.get<Country[]>( url );
             //puede ser bastante util para manejar u obtener los errores
   //           .pipe(
   //             catchError( arr => of([]) )
   //           );
+  }
+
+  buscarCapital( termino: string ): Observable<Country[]>{
+    const url = `${ this.apiUrl }/capital/${ termino }`
+    return this.http.get<Country[]>( url );
   }
   
 }

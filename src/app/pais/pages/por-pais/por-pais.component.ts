@@ -16,6 +16,7 @@ export class PorPaisComponent {
   //se crea una nueva variable pero con tipo booleana
   hayError: boolean = false;
   paises : Country[] = [];
+  placeholder: string = 'Por pais...';
 
   constructor( private paisService: PaisService  ) { }
 
