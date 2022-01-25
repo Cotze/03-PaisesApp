@@ -7,7 +7,11 @@ import { PaisService } from '../../services/pais.service';
 @Component({
   selector: 'app-por-pais',
   templateUrl: './por-pais.component.html',
-  styles: [
+  styles: [`
+    li{
+      cursor: pointer;
+    }
+  `
   ]
 })
 export class PorPaisComponent {
@@ -15,8 +19,15 @@ export class PorPaisComponent {
   termino: string = '';
   //se crea una nueva variable pero con tipo booleana
   hayError: boolean = false;
-  paises : Country[] = [];
+  buscarSugerencia: boolean = false;
+
+  paises: Country[] = [];
+  paisesSugeridos: Country[] = [];
+
+
   placeholder: string = 'Por pais...';
+
+
 
   constructor( private paisService: PaisService  ) { }
 
@@ -24,6 +35,8 @@ export class PorPaisComponent {
     //se genera el false antes del click para que valide la variable booleana
     this.hayError = false;
     this.termino = termino;
+    this.buscarSugerencia = false;
+
     this.paisService.buscarPais( this.termino )
     //es necesario el .suscribe() para utilizar el servicio
     .subscribe( (paises) =>{
@@ -39,7 +52,16 @@ export class PorPaisComponent {
 
   sugerencias( termino: string){
     this.hayError = false;
-    //TODO: crear sugerencias
+    this.termino = termino;
+    this.buscarSugerencia = true;
+    this.paisService.buscarPais( termino )
+      .subscribe( paises => this.paisesSugeridos = paises.splice(0, 5), 
+      ( err => this.paisesSugeridos = []))
+
+  }
+
+  buscarSugerido( termino: string){
+    this.buscar( termino );
   }
 
 

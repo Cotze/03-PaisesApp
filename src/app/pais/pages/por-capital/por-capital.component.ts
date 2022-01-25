@@ -17,8 +17,10 @@ export class PorCapitalComponent {
 
   termino: string = '';
   hayError: boolean = false;
+  buscarSugerencia: boolean = false;
 
   paises: Country[] = [];
+  paisesSugeridos: Country[] = [];
 
   @Output() onDebounce : EventEmitter<string> = new EventEmitter();
 
@@ -49,5 +51,14 @@ export class PorCapitalComponent {
 
   sugerencias( termino: string){
     this.hayError = false;
+    this.termino = termino;
+    this.buscarSugerencia = true;
+    this.paisService.buscarPais( termino )
+      .subscribe( paises => this.paisesSugeridos = paises.splice(0, 5), 
+      ( err => this.paisesSugeridos = []))
+  }
+
+  buscarSugerido( termino: string){
+    this.buscar( termino );
   }
 }
