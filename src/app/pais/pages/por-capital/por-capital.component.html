@@ -1,23 +1,26 @@
-<h2>Por capital</h2>
-<hr>
+<div class="animate__animated animate__backInUp animate__fast">
+    <h2>Por capital</h2>
+    <hr>
 
-<div class="row">
-    <div class="col">
-        <app-pais-input
-            (onEnter)="buscar( $event )"
-            (onDebounce)="sugerencias( $event )"
-            placeholder="Buscar por capital..."
-        ></app-pais-input>
+    <div class="row">
+        <div class="col">
+            <app-pais-input
+                (onEnter)="buscar( $event )"
+                (onDebounce)="sugerencias( $event )"
+                placeholder="Buscar por capital..."
+            ></app-pais-input>
+        </div>
     </div>
+    <hr>
 </div>
 
-<hr>
 <div *ngIf="hayError" class="alert alert-danger">
     No se encontro nada con el término {{ termino }}
 </div>
 
 <div *ngIf="paises.length > 0" class="row">
-    <div class="col">
+    <div class="col animate__animated animate__backInRight">
         <app-pais-tabla [paises]="paises"></app-pais-tabla>
     </div>
 </div>
+

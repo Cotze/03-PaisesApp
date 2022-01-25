@@ -42,9 +42,8 @@ export class PaisService {
     const url = `${this.apiUrl}/regionalbloc/${region}`;
     return this.http.get<Country[]>(url, { params: this.httpParams })
         .pipe(
-          tap(console.log);
+          tap(console.log)
           )
-        )
   }
   
 }
